@@ -25,5 +25,3 @@ click$
     .subscribe(console.log)
 
 
-
-

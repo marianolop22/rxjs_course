@@ -2,8 +2,8 @@
 import { from, Observer, of, range, Subject, fromEvent, interval, pipe, Observable, asyncScheduler, map, catchError } from 'rxjs';
 import { ajax, AjaxError } from "rxjs/ajax";
 import { debounceTime, mergeAll, pluck } from 'rxjs/operators';
-import { GithubUser } from './interfaces/github-user.interface';
-import { GithubUsers } from './interfaces/github-users.interface';
+import { GithubUser } from '../interfaces/github-user.interface';
+import { GithubUsers } from '../interfaces/github-users.interface';
 
 const observer: Observer<any> = {
     next: (valor) => console.log('next: ', valor),
