@@ -1,6 +1,6 @@
 
 
-import { from, Observer, of, fromEvent, interval, pipe, Observable, asyncScheduler, map, catchError, concat } from 'rxjs';
+import { from, Observer, of, range, Subject, fromEvent, interval, pipe, Observable, asyncScheduler, map, catchError } from 'rxjs';
 import { ajax, AjaxError } from "rxjs/ajax";
 import { debounceTime, mergeAll, pluck, mergeMap, switchMap, take, concatMap, exhaustMap, tap, startWith, endWith } from 'rxjs/operators';
 
@@ -18,20 +18,20 @@ const manejaError = (resp: AjaxError) => {
     })
 } 
 
+// startWith justo antes de emitir el primer valor, emite un vaor síncrono y luego emite los valores que necesita
+// endwith es lo mismo, pero gewnera al final de todo lo que yo quiera
 
-// concat ES UNA FUNCION a medida que se completan los obserbables, se van ejecutando los siguientes
+const numeros$ = of (1,2,3)
+numeros$
+    .pipe(
+        startWith('a','b','c'),
+        endWith('x','y','z'),
+        
+    )
+    .subscribe(
+        console.log
+    )
 
-const interval$ = interval(1000)
 
 
-concat (
-    interval$.pipe(
-        take(3)
-    ),
-    interval$.pipe(
-        take(2)
-    ),
-    [1,2,3,4,5]
-).subscribe(
-    console.log
-)
+

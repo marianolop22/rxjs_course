@@ -77,3 +77,7 @@ submitForm$
 // mergemap, puede tener muchass suscripciones abiertas simultaneamente
 // switchmap cancela cualquier suscripcion pendiente y solo regresa la ultima
 // exhaustmap niega todas las peticiones posteriores después de la primera
+
+// un operador de aplanamiento hace lo siguiente
+// cuando tengamos algo que devuelve un observable o algo que devuelve un observable
+// el operador nos suscribe internamente a ese observable y devuelve el producto de ese observable en la misma cadena de tiempo
