@@ -24,19 +24,49 @@ const manejaError = (resp: AjaxError) => {
 // los emite como un arreglo, devuelve el ultimo valor de cada uno
 
 
-const GITHUB_API_URL = 'https://api.github.com/users'
-const GITHUB_USER = 'marianolop22'
+const numeros$ = of (1,2,3,4)
+const interlavo$ = interval(1000).pipe(take(3))
+const letras$ = of ('a','b','c').pipe(delay(3500))
 
+// forkJoin ([
+//     numeros$,
+//     interlavo$,
+//     letras$
+// ])
+// .subscribe( console.log)
+
+// forkJoin ([
+//     numeros$,
+//     interlavo$,
+//     letras$
+// ])
+// .subscribe( resp => {
+//     console.log('numero', resp[0]);
+//     console.log('interval', resp[1]);
+//     console.log('letras', resp[2]);
+// })
+
+// forkJoin ({
+//     numeros$,
+//     interlavo$,
+//     letras$
+// })
+// .subscribe( resp => {
+//     console.log(resp);
+// })
 
 forkJoin ({
-    usuario:  ajax.getJSON(`${GITHUB_API_URL}/${GITHUB_USER}`),
-    repos: ajax.getJSON(`${GITHUB_API_URL}/${GITHUB_USER}/repos`),
-    gists: ajax.getJSON(`${GITHUB_API_URL}/${GITHUB_USER}/gists`),
-
+    num: numeros$,
+    int: interlavo$,
+    let: letras$
 })
 .subscribe( resp => {
     console.log(resp);
 })
+
+
+
+
 
 
 
